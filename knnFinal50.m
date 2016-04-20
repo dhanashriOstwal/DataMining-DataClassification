@@ -1,0 +1,14 @@
+data = dlmread('C:\Users\Dhanashri\Documents\Sem II\Data Mining\ATNT50\trainDataXY.txt');
+test = dlmread('C:\Users\Dhanashri\Documents\Sem II\Data Mining\ATNT50\testDataX.txt');
+train = data(2:end,1:end);
+group = data(1,1:end);
+train = train';
+test = test';
+dist = pdist2(test, train, 'euclidean');
+k = 5;
+[~,index] = sort(dist,2,'ascend');
+grp = group(index);
+ind = grp(:,1:k);
+G = mode(ind,2);
+output = G';
+disp(output);
